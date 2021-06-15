@@ -1,0 +1,54 @@
+package com.company;
+import java.util.Scanner;
+
+enum Season {
+    WINTER(-24), SPRING(15), SUMMER(30) {
+        public String getDescription() {
+            return "Теплое время года";
+        }
+    },
+    AUTUMN(20);
+    private double avgTmp;
+    Season(double avgTmp) {
+        this.avgTmp = avgTmp;
+    }
+    public double getAvgTmp() {
+        return avgTmp;
+    }
+    public String getDescription() {
+        return "Холодное время года";
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите любимое время года");
+        String favorite_season = in.nextLine();
+        Season season = Season.SUMMER;
+        System.out.println(season);
+        print(Season.AUTUMN);
+        printAllValues();
+    }
+    public static void print(Season season) {
+        switch (season) {
+            case WINTER:
+                System.out.print("I like Winter");
+                break;
+            case SPRING:
+                System.out.print("I like Spring");
+                break;
+            case SUMMER:
+                System.out.print("I like Summer");
+                break;
+            case AUTUMN:
+                System.out.print("I like Autumn ");
+                break;
+        }
+    }
+    public static void printAllValues() {
+        for (Season s : Season.values()) {
+            System.out.println(s + " " + s.getAvgTmp() + " " + s.getDescription());
+        }
+    }
+}
+
